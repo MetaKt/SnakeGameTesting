@@ -1,5 +1,6 @@
 # Java-Snake-Game
-Java Snake game source code
+(Java Snake game source code)
+
 This is a project for software testing course. I forked Snake Game from janbodnar to implement and test. All the credits for the game's code is to the creator janbodnar
 
 My implementation is in:
