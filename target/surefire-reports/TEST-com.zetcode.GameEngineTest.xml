@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.zetcode.GameEngineTest" time="0.111" tests="14" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game\target\test-classes;C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game\target\classes;C:\Users\meta2\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\meta2\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\meta2\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\meta2\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\meta2\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\meta2\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="java.vm.vendor" value="Azul Systems, Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://www.azul.com/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\meta2\AppData\Local\Temp\surefire260629516349717470\surefirebooter-20250530181759424_3.jar C:\Users\meta2\AppData\Local\Temp\surefire260629516349717470 2025-05-30T18-17-58_892-jvmRun1 surefire-20250530181759424_1tmp surefire_0-20250530181759424_2tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game\target\test-classes;C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game\target\classes;C:\Users\meta2\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\meta2\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\meta2\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\meta2\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\meta2\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\meta2\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\meta2"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre"/>
+    <property name="basedir" value="C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="jdk.vendor.version" value="Zulu 8.78.0.19-CA-win64"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\meta2\AppData\Local\Temp\surefire260629516349717470\surefirebooter-20250530181759424_3.jar;C:\\Users\\meta2\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.10\\org.jacoco.agent-0.8.10-runtime.jar"/>
+    <property name="sun.boot.class.path" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\resources.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\rt.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\sunrsasign.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\jsse.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\jce.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\charsets.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\jfr.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\cat.jar;C:\Users\meta2\anaconda3\envs\java8\Library\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_412-b08"/>
+    <property name="user.name" value="meta2"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\meta2\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://www.azul.com/support/"/>
+    <property name="java.io.tmpdir" value="C:\Users\meta2\AppData\Local\Temp\"/>
+    <property name="java.version" value="1.8.0_412"/>
+    <property name="user.dir" value="C:\Users\meta2\OneDrive\Desktop\WHU_SoftwareEngineering\Year3\Software_Testing\Java-Snake-Game"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\meta2\anaconda3\envs\java8;C:\Users\meta2\anaconda3\envs\java8\Library\mingw-w64\bin;C:\Users\meta2\anaconda3\envs\java8\Library\usr\bin;C:\Users\meta2\anaconda3\envs\java8\Library\bin;C:\Users\meta2\anaconda3\envs\java8\Scripts;C:\Users\meta2\anaconda3\envs\java8\bin;C:\Users\meta2\anaconda3\condabin;C:\Python313\Scripts;C:\Python313;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\libnvvp;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet;C:\Users\meta2\anaconda3\Scripts;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Users\meta2\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\meta2\AppData\Local\Programs\Python\Python311;C:\Users\meta2\AppData\Local\Microsoft\WindowsApps;C:\Users\meta2\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\meta2\AppData\Local\Programs\Ollama;C:\Users\meta2\.dotnet\tools;C:\Program Files\NVIDIA Corporation\Nsight Compute 2025.1.1;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\meta2\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\meta2\AppData\Local\Programs\Python\Python311;C:\Users\meta2\AppData\Local\Microsoft\WindowsApps;C:\Users\meta2\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\meta2\AppData\Local\Programs\Ollama;C:\Users\meta2\.dotnet\tools;C:\msys64\mingw64\bin;.;C:\Program Files\JetBrains\IntelliJ IDEA 2025.1\bin;.;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2025.1\bin;.;C:\Users\meta2\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Azul Systems, Inc."/>
+    <property name="java.vm.version" value="25.412-b08"/>
+    <property name="java.specification.maintenance.version" value="5"/>
+    <property name="java.ext.dirs" value="C:\Users\meta2\anaconda3\envs\java8\Library\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="topWallCollision" classname="com.zetcode.GameEngineTest" time="0.053"/>
+  <testcase name="moveUp" classname="com.zetcode.GameEngineTest" time="0.004"/>
+  <testcase name="testLocateAppleDirectly" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="appleEaten" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="initialState" classname="com.zetcode.GameEngineTest" time="0.002"/>
+  <testcase name="leftWallCollision" classname="com.zetcode.GameEngineTest" time="0.002"/>
+  <testcase name="moveDown" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="moveLeft" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="rightWallCollision" classname="com.zetcode.GameEngineTest" time="0"/>
+  <testcase name="validDirectionChanges" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="cannotReverse" classname="com.zetcode.GameEngineTest" time="0"/>
+  <testcase name="selfCollision" classname="com.zetcode.GameEngineTest" time="0"/>
+  <testcase name="moveRight" classname="com.zetcode.GameEngineTest" time="0.001"/>
+  <testcase name="noStepAfterGameOver" classname="com.zetcode.GameEngineTest" time="0"/>
+</testsuite>

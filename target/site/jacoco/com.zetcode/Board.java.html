@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-snake-game</a> &gt; <a href="index.source.html" class="el_package">com.zetcode</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">package com.zetcode;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class Board extends JPanel implements ActionListener {
+
+<span class="nc" id="L20">    private final int B_WIDTH = 300;</span>
+<span class="nc" id="L21">    private final int B_HEIGHT = 300;</span>
+<span class="nc" id="L22">    private final int DOT_SIZE = 10;</span>
+<span class="nc" id="L23">    private final int ALL_DOTS = 900;</span>
+<span class="nc" id="L24">    private final int RAND_POS = 29;</span>
+<span class="nc" id="L25">    private final int DELAY = 140;</span>
+
+<span class="nc" id="L27">    private final int x[] = new int[ALL_DOTS];</span>
+<span class="nc" id="L28">    private final int y[] = new int[ALL_DOTS];</span>
+
+    private int dots;
+    private int apple_x;
+    private int apple_y;
+
+<span class="nc" id="L34">    private boolean leftDirection = false;</span>
+<span class="nc" id="L35">    private boolean rightDirection = true;</span>
+<span class="nc" id="L36">    private boolean upDirection = false;</span>
+<span class="nc" id="L37">    private boolean downDirection = false;</span>
+<span class="nc" id="L38">    private boolean inGame = true;</span>
+
+    private Timer timer;
+    private Image ball;
+    private Image apple;
+    private Image head;
+
+<span class="nc" id="L45">    public Board() {</span>
+        
+<span class="nc" id="L47">        initBoard();</span>
+<span class="nc" id="L48">    }</span>
+    
+    private void initBoard() {
+
+<span class="nc" id="L52">        addKeyListener(new TAdapter());</span>
+<span class="nc" id="L53">        setBackground(Color.black);</span>
+<span class="nc" id="L54">        setFocusable(true);</span>
+
+<span class="nc" id="L56">        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));</span>
+<span class="nc" id="L57">        loadImages();</span>
+<span class="nc" id="L58">        initGame();</span>
+<span class="nc" id="L59">    }</span>
+
+    private void loadImages() {
+
+<span class="nc" id="L63">        ImageIcon iid = new ImageIcon(&quot;src/resources/dot.png&quot;);</span>
+<span class="nc" id="L64">        ball = iid.getImage();</span>
+
+<span class="nc" id="L66">        ImageIcon iia = new ImageIcon(&quot;src/resources/apple.png&quot;);</span>
+<span class="nc" id="L67">        apple = iia.getImage();</span>
+
+<span class="nc" id="L69">        ImageIcon iih = new ImageIcon(&quot;src/resources/head.png&quot;);</span>
+<span class="nc" id="L70">        head = iih.getImage();</span>
+<span class="nc" id="L71">    }</span>
+
+    private void initGame() {
+
+<span class="nc" id="L75">        dots = 3;</span>
+
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        for (int z = 0; z &lt; dots; z++) {</span>
+<span class="nc" id="L78">            x[z] = 50 - z * 10;</span>
+<span class="nc" id="L79">            y[z] = 50;</span>
+        }
+        
+<span class="nc" id="L82">        locateApple();</span>
+
+<span class="nc" id="L84">        timer = new Timer(DELAY, this);</span>
+<span class="nc" id="L85">        timer.start();</span>
+<span class="nc" id="L86">    }</span>
+
+    @Override
+    public void paintComponent(Graphics g) {
+<span class="nc" id="L90">        super.paintComponent(g);</span>
+
+<span class="nc" id="L92">        doDrawing(g);</span>
+<span class="nc" id="L93">    }</span>
+    
+    private void doDrawing(Graphics g) {
+        
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (inGame) {</span>
+
+<span class="nc" id="L99">            g.drawImage(apple, apple_x, apple_y, this);</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">            for (int z = 0; z &lt; dots; z++) {</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">                if (z == 0) {</span>
+<span class="nc" id="L103">                    g.drawImage(head, x[z], y[z], this);</span>
+                } else {
+<span class="nc" id="L105">                    g.drawImage(ball, x[z], y[z], this);</span>
+                }
+            }
+
+<span class="nc" id="L109">            Toolkit.getDefaultToolkit().sync();</span>
+
+        } else {
+
+<span class="nc" id="L113">            gameOver(g);</span>
+        }        
+<span class="nc" id="L115">    }</span>
+
+    private void gameOver(Graphics g) {
+        
+<span class="nc" id="L119">        String msg = &quot;Game Over&quot;;</span>
+<span class="nc" id="L120">        Font small = new Font(&quot;Helvetica&quot;, Font.BOLD, 14);</span>
+<span class="nc" id="L121">        FontMetrics metr = getFontMetrics(small);</span>
+
+<span class="nc" id="L123">        g.setColor(Color.white);</span>
+<span class="nc" id="L124">        g.setFont(small);</span>
+<span class="nc" id="L125">        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);</span>
+<span class="nc" id="L126">    }</span>
+
+    private void checkApple() {
+
+<span class="nc bnc" id="L130" title="All 4 branches missed.">        if ((x[0] == apple_x) &amp;&amp; (y[0] == apple_y)) {</span>
+
+<span class="nc" id="L132">            dots++;</span>
+<span class="nc" id="L133">            locateApple();</span>
+        }
+<span class="nc" id="L135">    }</span>
+
+    private void move() {
+
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        for (int z = dots; z &gt; 0; z--) {</span>
+<span class="nc" id="L140">            x[z] = x[(z - 1)];</span>
+<span class="nc" id="L141">            y[z] = y[(z - 1)];</span>
+        }
+
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (leftDirection) {</span>
+<span class="nc" id="L145">            x[0] -= DOT_SIZE;</span>
+        }
+
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (rightDirection) {</span>
+<span class="nc" id="L149">            x[0] += DOT_SIZE;</span>
+        }
+
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        if (upDirection) {</span>
+<span class="nc" id="L153">            y[0] -= DOT_SIZE;</span>
+        }
+
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        if (downDirection) {</span>
+<span class="nc" id="L157">            y[0] += DOT_SIZE;</span>
+        }
+<span class="nc" id="L159">    }</span>
+
+    private void checkCollision() {
+
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        for (int z = dots; z &gt; 0; z--) {</span>
+
+<span class="nc bnc" id="L165" title="All 6 branches missed.">            if ((z &gt; 4) &amp;&amp; (x[0] == x[z]) &amp;&amp; (y[0] == y[z])) {</span>
+<span class="nc" id="L166">                inGame = false;</span>
+            }
+        }
+
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        if (y[0] &gt;= B_HEIGHT) {</span>
+<span class="nc" id="L171">            inGame = false;</span>
+        }
+
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        if (y[0] &lt; 0) {</span>
+<span class="nc" id="L175">            inGame = false;</span>
+        }
+
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        if (x[0] &gt;= B_WIDTH) {</span>
+<span class="nc" id="L179">            inGame = false;</span>
+        }
+
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        if (x[0] &lt; 0) {</span>
+<span class="nc" id="L183">            inGame = false;</span>
+        }
+        
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        if (!inGame) {</span>
+<span class="nc" id="L187">            timer.stop();</span>
+        }
+<span class="nc" id="L189">    }</span>
+
+    private void locateApple() {
+
+<span class="nc" id="L193">        int r = (int) (Math.random() * RAND_POS);</span>
+<span class="nc" id="L194">        apple_x = ((r * DOT_SIZE));</span>
+
+<span class="nc" id="L196">        r = (int) (Math.random() * RAND_POS);</span>
+<span class="nc" id="L197">        apple_y = ((r * DOT_SIZE));</span>
+<span class="nc" id="L198">    }</span>
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+<span class="nc bnc" id="L203" title="All 2 branches missed.">        if (inGame) {</span>
+
+<span class="nc" id="L205">            checkApple();</span>
+<span class="nc" id="L206">            checkCollision();</span>
+<span class="nc" id="L207">            move();</span>
+        }
+
+<span class="nc" id="L210">        repaint();</span>
+<span class="nc" id="L211">    }</span>
+
+<span class="nc" id="L213">    private class TAdapter extends KeyAdapter {</span>
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+<span class="nc" id="L218">            int key = e.getKeyCode();</span>
+
+<span class="nc bnc" id="L220" title="All 4 branches missed.">            if ((key == KeyEvent.VK_LEFT) &amp;&amp; (!rightDirection)) {</span>
+<span class="nc" id="L221">                leftDirection = true;</span>
+<span class="nc" id="L222">                upDirection = false;</span>
+<span class="nc" id="L223">                downDirection = false;</span>
+            }
+
+<span class="nc bnc" id="L226" title="All 4 branches missed.">            if ((key == KeyEvent.VK_RIGHT) &amp;&amp; (!leftDirection)) {</span>
+<span class="nc" id="L227">                rightDirection = true;</span>
+<span class="nc" id="L228">                upDirection = false;</span>
+<span class="nc" id="L229">                downDirection = false;</span>
+            }
+
+<span class="nc bnc" id="L232" title="All 4 branches missed.">            if ((key == KeyEvent.VK_UP) &amp;&amp; (!downDirection)) {</span>
+<span class="nc" id="L233">                upDirection = true;</span>
+<span class="nc" id="L234">                rightDirection = false;</span>
+<span class="nc" id="L235">                leftDirection = false;</span>
+            }
+
+<span class="nc bnc" id="L238" title="All 4 branches missed.">            if ((key == KeyEvent.VK_DOWN) &amp;&amp; (!upDirection)) {</span>
+<span class="nc" id="L239">                downDirection = true;</span>
+<span class="nc" id="L240">                rightDirection = false;</span>
+<span class="nc" id="L241">                leftDirection = false;</span>
+            }
+<span class="nc" id="L243">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

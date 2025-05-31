@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameEngine.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-snake-game</a> &gt; <a href="index.source.html" class="el_package">com.zetcode</a> &gt; <span class="el_source">GameEngine.java</span></div><h1>GameEngine.java</h1><pre class="source lang-java linenums">// src/com/zetcode/GameEngine.java
+package com.zetcode;
+
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameEngine {
+
+<span class="fc" id="L10">    public enum Direction { UP, DOWN, LEFT, RIGHT }</span>
+
+    public interface PositionGenerator {
+        Point next();
+    }
+
+    private final int width, height, dotSize;
+    private final PositionGenerator posGen;
+
+    private List&lt;Point&gt; snake;
+    private Point apple;
+    private Direction direction;
+    private boolean inGame;
+
+<span class="fc" id="L24">    public GameEngine(int width, int height, int dotSize, PositionGenerator posGen) {</span>
+<span class="fc" id="L25">        this.width = width; this.height = height; this.dotSize = dotSize; this.posGen = posGen;</span>
+<span class="fc" id="L26">    }</span>
+
+    public void init() {
+<span class="fc" id="L29">        snake = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L30">        int startX = dotSize * 3, startY = dotSize * 3;</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++)</span>
+<span class="fc" id="L32">            snake.add(new Point(startX - i * dotSize, startY));</span>
+<span class="fc" id="L33">        direction = Direction.RIGHT;</span>
+<span class="fc" id="L34">        inGame = true;</span>
+<span class="fc" id="L35">        locateApple();</span>
+<span class="fc" id="L36">    }</span>
+
+    public void locateApple() {
+<span class="fc" id="L39">        Point p = posGen.next();</span>
+<span class="fc" id="L40">        apple = new Point(p);</span>
+<span class="fc" id="L41">    }</span>
+
+    public void changeDirection(Direction newDir) {
+<span class="pc bpc" id="L44" title="3 of 16 branches missed.">        if ((direction == Direction.LEFT  &amp;&amp; newDir == Direction.RIGHT) ||</span>
+                (direction == Direction.RIGHT &amp;&amp; newDir == Direction.LEFT)  ||
+                (direction == Direction.UP    &amp;&amp; newDir == Direction.DOWN) ||
+                (direction == Direction.DOWN  &amp;&amp; newDir == Direction.UP))
+<span class="fc" id="L48">            return;</span>
+<span class="fc" id="L49">        direction = newDir;</span>
+<span class="fc" id="L50">    }</span>
+
+    public void step() {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (!inGame) return;</span>
+<span class="fc" id="L54">        move(); checkApple(); checkCollision();</span>
+<span class="fc" id="L55">    }</span>
+
+    private void move() {
+        // … copy body code …
+<span class="fc" id="L59">        Point head = snake.get(0), n = new Point(head);</span>
+<span class="pc bpc" id="L60" title="1 of 5 branches missed.">        switch (direction) {</span>
+            case UP:
+<span class="fc" id="L62">                n.y -= dotSize;</span>
+<span class="fc" id="L63">                break;</span>
+            case DOWN:
+<span class="fc" id="L65">                n.y += dotSize;</span>
+<span class="fc" id="L66">                break;</span>
+            case LEFT:
+<span class="fc" id="L68">                n.x -= dotSize;</span>
+<span class="fc" id="L69">                break;</span>
+            case RIGHT:
+<span class="fc" id="L71">                n.x += dotSize;</span>
+                break;
+        }
+<span class="fc" id="L74">        snake.set(0, n);</span>
+<span class="fc" id="L75">    }</span>
+
+
+    private void checkApple() {
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if (snake.get(0).equals(apple)) {</span>
+<span class="fc" id="L80">            snake.add(new Point(snake.get(snake.size() - 1)));</span>
+<span class="fc" id="L81">            locateApple();</span>
+        }
+<span class="fc" id="L83">    }</span>
+
+    private void checkCollision() {
+<span class="fc" id="L86">        Point head = snake.get(0);</span>
+<span class="pc bpc" id="L87" title="2 of 8 branches missed.">        if (head.x &lt; 0 || head.x &gt;= width || head.y &lt; 0 || head.y &gt;= height) {</span>
+<span class="fc" id="L88">            inGame = false; return;</span>
+        }
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (int i = 1; i &lt; snake.size(); i++)</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">            if (head.equals(snake.get(i))) {</span>
+<span class="fc" id="L92">                inGame = false; return;</span>
+            }
+<span class="fc" id="L94">    }</span>
+
+    // ─── Getters ─────────────────────────────────
+
+<span class="fc" id="L98">    public List&lt;Point&gt; getSnake()     { return new ArrayList&lt;&gt;(snake); }</span>
+<span class="fc" id="L99">    public Point getApple()           { return new Point(apple); }</span>
+<span class="fc" id="L100">    public Direction getDirection()   { return direction; }</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">    public boolean isGameOver()       { return !inGame; }</span>
+
+    // ─── Test Helpers ────────────────────────────
+
+<span class="fc" id="L105">    public void setSnake(List&lt;Point&gt; s) { snake = new ArrayList&lt;&gt;(s); }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
